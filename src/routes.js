@@ -13,13 +13,14 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
 
   .state('home', {
     url: '/',
-    //templateUrl: 'src/menu/templates/home.template.html'
-    template: '<h1>Welcome to our Restaurant</h1><a ui-sref="categories">Categories</a><ui-view></ui-view>'
+    templateUrl: 'src/menu/templates/home.template.html'
+    //template: '<h1>Welcome to our Restaurant</h1><a ui-sref="categories">Categories</a><ui-view></ui-view>'
   })
 
   .state('categories', {
     url: '/categories',
     templateUrl: 'src/menu/templates/categoriesList.template.html',
+    //template: '<a ui-sref="home">Home</a> &lt; <span>Categories</span><categories-list items="menu.categories"></categories-list><ui-view></ui-view>',
     controller: 'CategoriesController as categories',
     resolve: {
       categories: ['MenuDataService', function (MenuDataService) {
@@ -30,7 +31,8 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
 
   .state('category.items', {
     url: '/category/{categoryShortName}',
-    templateUrl: 'src/menu/templates/items.template.html',
+    //templateUrl: 'src/menu/templates/items.template.html',
+    template: '<a ui-sref="categories">Categories</a> &lt; <span>Items</span><category-items items = "menu.items"></category-items><ui-view></ui-view>',
     controller: 'CategoryItemsController as items',
     resolve: {
       items:  [ '$stateParams' ,'MenuDataService', function (stateParams, MenuDataService) {

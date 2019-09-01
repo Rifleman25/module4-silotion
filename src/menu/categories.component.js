@@ -2,9 +2,9 @@
     'use strict';
     
     angular.module('Data')
-    .component('categories', {
-      //templateUrl: 'src/menu/templates/categories.template.html',
-      template: '<ul><li ng-repeat="item in $ctrl.categories"ui-sref="categories.item({categoryShortName: item.short_name})">({{ item.short_name }}): {{ item.name }}</li></ul>',
+    .component('categoriesList', {
+      templateUrl: 'src/menu/templates/categories.template.html',
+      //template: '<ul><li ng-repeat="item in $ctrl.categories"ui-sref="categories.item({categoryShortName: item.short_name})">({{ item.short_name }}): {{ item.name }}</li></ul>',
       bindings: {
         categories: '<'
       }

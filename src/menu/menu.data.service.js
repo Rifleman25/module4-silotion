@@ -10,8 +10,6 @@ MenuDataService.$inject = ['$http', 'ApiBasePath']
 function MenuDataService($q, $timeout) {
   var service = this;
 
-  var menuList = [];
-
   service.getAllCategories = function () {
     var response = $http({
         method: "GET",
@@ -19,33 +17,17 @@ function MenuDataService($q, $timeout) {
     });
 
     return response;
-  }
+  };
 
   service.getItemsForCategory = function (categoryShortName) {
     var response = $http({
         method: "GET",
-        params: {
-            category: categoryShortName
-        },
-        url: (ApiBasePath + '/menu_items.json')
+        url: (ApiBasePath + '/menu_items.json?category=' + categoryShortName)
     });
 
     return response;
-  }
-
-  // Simulates call to server
-  // Returns a promise, NOT items array directly
-  service.getItems = function () {
-    var deferred = $q.defer();
-
-    // Wait 2 seconds before returning
-    $timeout(function () {
-      // deferred.reject(items);
-      deferred.resolve(items);
-    }, 800);
-
-    return deferred.promise;
   };
+
 }
 
 })();
