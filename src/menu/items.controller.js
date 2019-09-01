@@ -7,7 +7,7 @@
   CategoryItemsController.$inject = ['$stateParams', 'MenuDataService','items'];
   function CategoryItemsController($stateParams, MenuDataService, items) {
     var menu = this;
-    menu.items = items;
+    menu.items = items.data.menu_items;
   }
 
 })();
